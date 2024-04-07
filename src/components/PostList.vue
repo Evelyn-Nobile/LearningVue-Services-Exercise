@@ -36,7 +36,7 @@ await service.fetchAll()
 .container{
     border: 2px solid cornflowerblue;
     width: 300px;
-    height: 200px;
-    padding: 15px;
+    height: 230px;
+    padding: 20px;
 }
 </style>
