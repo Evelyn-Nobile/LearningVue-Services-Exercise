@@ -23,4 +23,20 @@ await service.fetchAll()
 </script> 
 
 <style scoped>
+.postList{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 3rem;
+  width: 100%;
+}
+
+.container{
+    border: 2px solid cornflowerblue;
+    width: 300px;
+    height: 200px;
+    padding: 15px;
+}
 </style>
