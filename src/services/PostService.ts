@@ -1,25 +1,26 @@
 // nuestro post va a ser una referencia para que cuando lo actualicemos
 // el proceso desencadenante de las dependecias nos actualice la info en nuestros componentes
 
-import { ref } from 'vue'; // Importamos la función 'ref' de Vue para crear una referencia reactiva
+import { Ref, ref } from 'vue'; // Importamos la función 'ref' de Vue para crear una referencia reactiva
+import IPost from '@/interfaces/IPost';
 
 
 class PostService {
    
-    private posts; // Declaramos una variable privada 'posts'
+    private posts:Ref<Array<IPost>>; // Declaramos una variable privada 'posts'
   
     constructor() {
       // Inicializamos la variable 'posts' como una referencia reactiva vacía
-      this.posts = ref([]);
+      this.posts = ref<Array<IPost>>([]);
     }
   
     // Getter para obtener la referencia reactiva 'posts'
-    getPosts() {
+    getPosts():Ref<Array<IPost>> { //tipado del valor de retorno
       return this.posts;
     }
   
     // Función asincrónica para obtener datos de una API
-    async fetchAll() {
+    async fetchAll():Promise<void> {
       try {
           const url = 'https://jsonplaceholder.typicode.com/posts'; // URL de la API
   
