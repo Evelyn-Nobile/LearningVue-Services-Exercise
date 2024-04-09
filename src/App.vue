@@ -1,11 +1,10 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <h1>Learning Vue3: Services</h1>
-  <PostList/>
+ 
+  <router-view/>
+  
 </template>
 
 <script lang="ts" setup>
-import PostList from './components/PostList.vue';
 
 </script>
 
@@ -18,5 +17,6 @@ import PostList from './components/PostList.vue';
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  box-sizing: border-box;
 }
 </style>

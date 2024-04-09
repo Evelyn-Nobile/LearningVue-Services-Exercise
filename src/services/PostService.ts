@@ -8,10 +8,12 @@ import IPost from '@/interfaces/IPost';
 class PostService {
    
     private posts:Ref<Array<IPost>>; // Declaramos una variable privada 'posts'
+    private post:Ref<IPost>;
   
     constructor() {
       // Inicializamos la variable 'posts' como una referencia reactiva vacía
       this.posts = ref<Array<IPost>>([]);
+      this.post = ref<IPost>({})
     }
   
     // Getter para obtener la referencia reactiva 'posts'
@@ -19,6 +21,10 @@ class PostService {
       return this.posts;
     }
   
+    getPost():Ref<IPost>{
+      return this.post
+    }
+
     // Función asincrónica para obtener datos de una API
     async fetchAll():Promise<void> {
       try {
@@ -35,6 +41,22 @@ class PostService {
   
       } catch (error) {
           console.log(error); 
+      }
+    }
+
+    async fetchId(id:string | Array<string>):Promise<void> {
+      try {
+        const url = 'https://jsonplaceholder.typicode.com/posts/' + id; 
+
+        const response = await fetch(url);
+
+        const json = await response.json()
+
+        this.post.value = await json;
+
+      } catch (error) {
+
+        console.log(error);
       }
     }
   }
